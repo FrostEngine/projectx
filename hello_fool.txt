@@ -1,3 +1,1 @@
-<?php
-echo"hek en dan nog wat";
-?>
+dingen
