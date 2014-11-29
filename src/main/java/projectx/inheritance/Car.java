@@ -1,4 +1,4 @@
-package projectx.inheritance;
+package main.java.projectx.inheritance;
 
 /**
  * Created by Rommert on 30-11-2014.
