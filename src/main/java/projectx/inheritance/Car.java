@@ -5,9 +5,9 @@ package main.java.projectx.inheritance;
  */
 public class Car {
 
-    int nrOfWheels;
-    int topSpeed;
-    int nrOfSeats;
+    private int nrOfWheels;
+    private int topSpeed;
+    private int nrOfSeats;
 
     public Car(int nrOfWheels, int topSpeed, int nrOfSeats) {
         this.nrOfWheels = nrOfWheels;
