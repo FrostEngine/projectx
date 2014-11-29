@@ -1,4 +1,4 @@
-package projectx;
+package main.java.projectx;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,32 +43,40 @@ public class Main {
 		// A combination is cool too. For instance, give a number of cars, print the brands of those that are excellent
 		// and the name is shorter then 6 letters
 
-		Car skoda = new Car(true, "Skoda");
-		Car fiat = new Car(false, "Fiat");
-		Car mercedes = new Car(true, "Mercedes");
-		Car volkswagen = new Car(true, "Volkswagen");
+		Car skoda = new Car(true, "Skoda",true);
+		Car fiat = new Car(false, "Fiat",false);
+		Car mercedes = new Car(true, "Mercedes",true);
+		Car volkswagen = new Car(true, "Volkswagen",false);
 		List<Car> cars = new ArrayList<>();
 		cars.addAll(Arrays.asList(skoda, fiat, mercedes, volkswagen));
 
-		System.out.println("Auto's die excellent zijn en een naam hebben van minder dan 6 tekens:");
+		System.out.println("Auto's die excellent zijn, regelmatig een software update nodig hebben en een naam hebben van minder dan 6 tekens:");
 		cars.stream() // get a stream,
 				.filter(c->c.isExcellent()) // filter on excellence and create a new stream with only those elements
 				.filter(c -> c.getName().length() < 6) // filter on name length and create a new stream with only those elements
-				.map(c->c.getName()) // get the names instead of the cars and create a new stream with only those elements
+				.filter(car->car.requiresSoftwareUpdates())
+				.map(c->c.getName() + "\n update Regelmatig!!") // get the names instead of the cars and create a new stream with only those elements
 				.forEach(System.out::println); // print each element in your stream
+				
 	}
 
 	private static class Car {
 		private boolean isExcellent;
 		private String name;
+		private boolean regularSoftwareUpdate;
 
-		public Car(boolean isExcellent, String name) {
+		public Car(boolean isExcellent, String name, boolean softwareUpdate) {
 			this.isExcellent = isExcellent;
 			this.name = name;
+			this.regularSoftwareUpdate = softwareUpdate;
 		}
 
 		public boolean isExcellent() {
 			return isExcellent;
+		}
+		
+		public boolean requiresSoftwareUpdates() {
+			return regularSoftwareUpdate;
 		}
 
 		public String getName() {
