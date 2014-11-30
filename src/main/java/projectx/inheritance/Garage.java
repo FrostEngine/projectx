@@ -19,11 +19,16 @@ public class Garage {
         // show regular car
         showCar(simpleCar);
         showCar(limo);
-        showCar(raceCar);
+        showCar(raceCar); // polymorphism: java knows it needs to call a more specific method for this racecar
+
+        // castedRaceCar is the same(!) object as raceCar, but we only tell java that it's a Car. So java
+        // no longer knows about the zwesome spoiler!
+        Car castedRaceCar = raceCar;
+        showCar(castedRaceCar);
     }
 
     private void showCar(Car car) {
-        System.out.printf("Nr of wheels: %s, topSpeed: %s, nr of seats: %s\n", car.getNrOfWheels(), car.getTopSpeed(), car.getNrOfSeats());
+        System.out.printf("Showing regular car: nr of wheels: %s, topSpeed: %s, nr of seats: %s\n", car.getNrOfWheels(), car.getTopSpeed(), car.getNrOfSeats());
     }
 
     private void showCar(RaceCar raceCar) {
