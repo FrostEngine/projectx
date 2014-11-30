@@ -1,5 +1,8 @@
 package projectx.inheritance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Rommert on 30-11-2014.
  */
@@ -25,6 +28,14 @@ public class Garage {
         // no longer knows about the zwesome spoiler!
         Car castedRaceCar = raceCar;
         showCar(castedRaceCar);
+
+        // Things in list get the type of the list. So adding raceCar to the list will make it a regular car
+        System.out.println("Showing a list of Car items");
+        List<Car> regularCars = new ArrayList<>();
+        regularCars.add(simpleCar);
+        regularCars.add(limo);
+        regularCars.add(raceCar);
+        regularCars.stream().forEach(this::showCar);
     }
 
     private void showCar(Car car) {
