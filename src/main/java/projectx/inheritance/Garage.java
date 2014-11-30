@@ -40,6 +40,9 @@ public class Garage {
 
         System.out.println("Showing a list of Car items using the showCarWithSpecificDetails method");
         regularCars.stream().forEach(this::showCarWithSpecificDetails);
+
+        System.out.println("Showing a list of Car items using the showCarWithSpecificDetailsThrougUnprotectedCasting method");
+        regularCars.stream().forEach(this::showCarWithSpecificDetailsThroughUnprotectedCasting);
     }
 
     private void showCar(Car car) {
@@ -61,6 +64,20 @@ public class Garage {
         if (car instanceof RaceCar) {
             RaceCar raceCar = (RaceCar) car;
             System.out.printf("Oh, btw, this looks like a RaceCar, and the spoiler is %s!!!", raceCar.getSpoilerType());
+        }
+    }
+
+    private void showCarWithSpecificDetailsThroughUnprotectedCasting(Car car) {
+        // show regular car
+        System.out.printf("Showing regular car: nr of wheels: %s, topSpeed: %s, nr of seats: %s\n", car.getNrOfWheels(), car.getTopSpeed(), car.getNrOfSeats());
+        // if car is in fact a RaceCar, do additional stuff!
+        try {
+            RaceCar raceCar = (RaceCar) car;
+            System.out.printf("Oh, btw, this looks like a RaceCar, and the spoiler is %s!!!", raceCar.getSpoilerType());
+        } catch (ClassCastException e) {
+            // ok, so this wasn't a RaceCar... 2bad
+            System.out.println(".");
+            // On a more serious note: "swallowing" exceptions like this is EVIL!!!!!!!
         }
     }
 }
