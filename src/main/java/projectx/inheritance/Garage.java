@@ -1,5 +1,8 @@
-package projectx.inheritance;
+package main.java.projectx.inheritance;
 
+
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Created by Rommert on 30-11-2014.
  */
@@ -20,6 +23,21 @@ public class Garage {
         showCar(simpleCar);
         showCar(limo);
         showCar(raceCar);
+       
+
+
+	     // castedRaceCar is the same(!) object as raceCar, but we only tell java that it's a Car. So java
+	     // no longer knows about the awesome spoiler!
+	     Car castedRaceCar = raceCar;
+	     showCar(castedRaceCar);
+	     
+	     System.out.println("Showing a list of Car items");
+	     List<Car> regularCars = new ArrayList<>();
+	     regularCars.add(simpleCar);
+	     regularCars.add(limo);
+	     regularCars.add(raceCar);
+	     regularCars.stream().forEach(this::showCar);
+	     
     }
 
     private void showCar(Car car) {
