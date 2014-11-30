@@ -1,4 +1,4 @@
-package main.java.projectx;
+package projectx;
 
 import java.util.ArrayList;
 import java.util.Arrays;
