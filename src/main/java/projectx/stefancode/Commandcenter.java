@@ -26,9 +26,9 @@ public class Commandcenter {
 	
 	private void buildUnits() {
 		
-		Unit marine = new Unit(45, 1, "Marine");
-		Unit marauder = new Unit(120, 1, "Marauder");
-		Unit reaper = new Unit(60, 1, "Reaper");
+		Unit marine = new Unit(45, "Marine", false);
+		Unit marauder = new Unit(120, "Marauder", true);
+		Unit reaper = new Unit(60, "Reaper", true);
 		
 		List<Unit> units = new ArrayList<Unit>();
 		units.addAll(Arrays.asList(marine,marauder,reaper));
