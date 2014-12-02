@@ -8,10 +8,17 @@ import java.util.List;
 public class Commandcenter {
 	
 	private List<Unit> units;
+	private List<Groundunit> groundUnits;
 	
 	public static void main(String[] args) {
 		Commandcenter cc = new Commandcenter();
 		cc.buildUnits();
+		
+		Groundunit unit1 = cc.groundUnits.get(0);
+		Groundunit unit0 = cc.groundUnits.get(1);
+		
+		unit1.fight(unit0);
+		
 		cc.showUnits();
 	}
 	
@@ -20,14 +27,21 @@ public class Commandcenter {
 		.filter(u->u.getHealth() > 50)
 		.map(u->u.getName())
 		.forEach(System.out::println);
+		
 	}
 	
 	private void buildUnits() {
-		Unit marine = new Unit(45, "Marine", false);
-		Unit marauder = new Unit(120, "Marauder", true);
-		Unit reaper = new Unit(60, "Reaper", true);
+		Groundunit marine = new Groundunit(80, "Marine", false, 45, true);
+		Groundunit marauder = new Groundunit(140, "Marauder", true, 30, true);
+		Unit raven = new Unit(60, "Reaper", true);
+		
+		List<Groundunit> groundUnits = new ArrayList<Groundunit>();
+		this.groundUnits = groundUnits;
+		
+		this.groundUnits.addAll(Arrays.asList(marine,marauder));
+		
 		List<Unit> units = new ArrayList<Unit>();
-		units.addAll(Arrays.asList(marine,marauder,reaper));
+		units.addAll(Arrays.asList(marine,marauder,raven));
 		this.units = units;
 	}
 }
