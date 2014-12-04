@@ -19,21 +19,24 @@ public class Commandcenter {
 		
 		unit1.fight(unit0);
 		
-		cc.showUnits();
+		//cc.showUnits();
 	}
 	
 	private void showUnits () {
-		units.stream()
+		int dingen = (int) units.stream()
 		.filter(u->u.getHealth() > 50)
-		.map(u->u.getName())
-		.forEach(System.out::println);
+		//.map(u->u.getName())
+		.count();
+		
+		System.out.println(dingen);
 		
 	}
 	
 	private void buildUnits() {
-		Groundunit marine = new Groundunit(80, "Marine", false, 45, true);
-		Groundunit marauder = new Groundunit(140, "Marauder", true, 30, true);
+		Groundunit marine = new Groundunit(80, "Marine", true, 45, true);
+		Groundunit marauder = new Groundunit(140, "Marauder", false, 30, true);
 		Unit raven = new Unit(60, "Reaper", true);
+		Unit scv = new Groundunit(0, null, false, 0, false);
 		
 		List<Groundunit> groundUnits = new ArrayList<Groundunit>();
 		this.groundUnits = groundUnits;
