@@ -1,4 +1,4 @@
-package main.java.projectx.commandcenter;
+package projectx.commandcenter;
 
 import java.util.ArrayList;
 import java.util.List;

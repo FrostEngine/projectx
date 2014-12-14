@@ -1,4 +1,4 @@
-package main.java.projectx.commandcenter;
+package projectx.commandcenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,15 +33,21 @@ public class Commandcenter {
 	}
 	
 	private void buildUnits() {
-		Groundunit marine = new Groundunit(80, "Marine", true, 45, true);
-		Groundunit marauder = new Groundunit(140, "Marauder", false, 30, true);
+		Groundunit marine = new Groundunit(80, "Marine", true, 45, true, "someMarine");
+		Groundunit marauder = new Groundunit(140, "Marauder", false, 30, true, "someMarauder");
 		Unit raven = new Unit(60, "Reaper", true);
-		Unit scv = new Groundunit(0, null, false, 0, false);
+		Unit scv = new Groundunit(0, null, false, 0, false, "steve");
+
+		// of een subclass maken van GroundUnit die vaste waarden gebruikt voor zn fields:
+
+		Marauder marauderPiet = new Marauder("Piet");
+		Marauder marauderHenk = new Marauder("Henk");
+		Marine vincenzo = new Marine("Vincenzo");
 		
 		List<Groundunit> groundUnits = new ArrayList<Groundunit>();
 		this.groundUnits = groundUnits;
 		
-		this.groundUnits.addAll(Arrays.asList(marine,marauder));
+		this.groundUnits.addAll(Arrays.asList(marine,marauder, marauderPiet, marauderHenk, vincenzo));
 		
 		List<Unit> units = new ArrayList<Unit>();
 		units.addAll(Arrays.asList(marine,marauder,raven));
